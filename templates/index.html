@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vessel Data</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static', filename='scripts.js') }}" defer></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Map container -->
+        <div id="map">{{ map_html|safe }}</div>
+
+        <!-- Table container -->
+        <div class="table-container">
+            <div id="vessel-contents" class="vessel-contents">
+                <button onclick="hideVesselContents()">Hide</button>
+                <table id="contents-table" class="table">
+                    <thead>
+                        <tr>
+                            <th class="table__cell">Item Name</th>
+                            <th class="table__cell">Quantity</th>
+                        </tr>
+                    </thead>
+                    <tbody id="contents-list"></tbody>
+                </table>
+                <div class="pagination">
+                    <button id="prev-page" onclick="prevPage()">Previous</button>
+                    <span id="current-page">1</span>
+                    <button id="next-page" onclick="nextPage()">Next</button>
+                </div>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr class="table__header">
+                        {% for header in headings %}
+                        <th class="table__cell">{{ header }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in data %}
+                    <tr class="table__row">
+                        <td class="table__cell">
+                            <a href="#" class="vessel-name" data-vessel-id="{{ row[4] }}">{{ row[0] }}</a>
+                        </td>
+                        {% for cell in row[1:4] %}
+                        <td class="table__cell">{{ cell }}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

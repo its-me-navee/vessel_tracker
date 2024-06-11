@@ -1,0 +1,72 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Full viewport height */
+    overflow: hidden; /* Prevent scrolling */
+}
+
+.container {
+    display: flex;
+    height: 100%;
+}
+
+#map {
+    height: 100%;
+    width: 60%;
+}
+
+.table-container {
+    width: 40%;
+    overflow-y: auto; /* Enable scrolling for the table */
+    padding: 20px;
+    box-sizing: border-box; /* Include padding in the element's total width and height */
+}
+
+#vessel-contents {
+    display: none;
+    position: absolute; /* Position the overlay relative to the container */
+    top: 0; /* Align the top of the overlay with the top of the container */
+    left: 70%; /* Align the left of the overlay with the left of the container, plus 60px */
+    width: 20%; /* Make the overlay width equal to the container width minus 60px */
+    background-color: white;
+    z-index: 1;
+    padding: 20px; /* Add some padding for better appearance */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for better visibility */
+}
+
+.table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.table__header {
+    background-color: #f2f2f2;
+}
+
+.table__cell {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.table__header .table__cell {
+    font-weight: bold;
+    text-align: left;
+}
+
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.pagination button {
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.pagination span {
+    margin: 0 10px;
+}
